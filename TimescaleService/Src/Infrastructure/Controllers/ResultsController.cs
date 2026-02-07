@@ -9,15 +9,15 @@ namespace TimescaleService.Infrastructure.Controllers;
 [Route("[controller]")]
 public class ResultsController : ControllerBase
 {
-    private readonly ResultsFilterPipeline _pipeline;
+    private readonly IResultsFilterPipeline _pipeline;
 
-    public ResultsController(ResultsFilterPipeline pipeline)
+    public ResultsController(IResultsFilterPipeline pipeline)
     {
         _pipeline = pipeline;
     }
 
     [HttpGet]
-    public async Task<ActionResult<IReadOnlyList<AggregatedResult>>> GetFiltetedData([FromQuery] ResultsFilterRequest request)
+    public async Task<ActionResult<IReadOnlyList<AggregatedResult>>> GetFilteredData([FromQuery] ResultsFilterRequest request)
     {
         if (request.MinimumDateFrom.HasValue && request.MinimumDateTo.HasValue && request.MinimumDateFrom > request.MinimumDateTo)
             return BadRequest("MinimumDateFrom must be <= MinimumDateTo");

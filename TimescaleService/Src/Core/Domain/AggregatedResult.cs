@@ -4,7 +4,7 @@ public class AggregatedResult
 {
     public string FileName { get; init; }
     
-    public int DateDelta { get; set; }
+    public double DateDelta { get; set; }
     
     public DateTime MinimumDate { get; set; }
     

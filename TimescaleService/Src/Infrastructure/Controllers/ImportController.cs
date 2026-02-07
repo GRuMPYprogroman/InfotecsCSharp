@@ -19,7 +19,9 @@ public class ImportController : ControllerBase
         _csvParserService = csvParserService;
     }
 
-    public async Task<IActionResult> Import([FromForm] IFormFile file)
+    [HttpPost("import")]
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> Import(IFormFile file)
     {
         if (file.Length == 0)
             return BadRequest("File is empty");
@@ -38,10 +40,9 @@ public class ImportController : ControllerBase
             var parsedData = _csvParserService.Parse(stream, fileName);
 
             await _resultsService.AddAsync(parsedData);
-            
-            var importData = await _valuesService.AddAsync(parsedData);
+            await _valuesService.AddAsync(parsedData);
 
-            return Ok("Imported" + importData.FileName);
+            return Ok("Imported " + fileName);
         }
         catch(Exception ex)
         {

@@ -29,7 +29,7 @@ public class Timescale
             
             if (value < new DateTime(2000, 1, 1, 0, 0, 0, DateTimeKind.Utc)
                 || value > DateTime.UtcNow)
-                throw new ArgumentOutOfRangeException(nameof(value));
+                throw new ArgumentOutOfRangeException("Date can't be earlier than 2000 or later than today");
             
             _date = value;
         }
@@ -42,7 +42,7 @@ public class Timescale
         private init
         {
             if (value < 0)
-                throw new ArgumentOutOfRangeException(nameof(value));
+                throw new ArgumentOutOfRangeException("Time can't be less than 0.");
             
             _executionTime = value;
         }
@@ -55,7 +55,7 @@ public class Timescale
         private init
         {
             if (value < 0)
-                throw new ArgumentOutOfRangeException(nameof(value));
+                throw new ArgumentOutOfRangeException("Value can't be less than 0.");
             
             _value = value;
         }

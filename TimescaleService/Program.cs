@@ -29,7 +29,7 @@ services.AddScoped<AverageValueRangeHandler>();
 services.AddScoped<AverageExecTimeRangeHandler>();
 services.AddScoped<TerminalHandler>();
 
-services.AddScoped<ResultsFilterPipeline>();
+services.AddScoped<IResultsFilterPipeline, ResultsFilterPipeline>();
 
 builder.Services.AddControllers();
 

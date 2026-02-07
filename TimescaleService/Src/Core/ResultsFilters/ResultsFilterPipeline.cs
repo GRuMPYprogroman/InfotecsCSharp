@@ -3,7 +3,7 @@ using TimescaleService.Core.ResultsFilters.Handlers;
 
 namespace TimescaleService.Core.ResultsFilters;
 
-public class ResultsFilterPipeline
+public class ResultsFilterPipeline : IResultsFilterPipeline
 {
     private readonly FileNameHandler _fileName;
     private readonly MinimumDateRangeHandler _minDate;
@@ -34,6 +34,7 @@ public class ResultsFilterPipeline
     public Task<List<AggregatedResult>> ExecuteAsync(ResultsFilterRequest request)
     {
         var ctx = new ResultsFilterContext();
+        
         return _fileName.HandleAsync(request, ctx);
     }
 }

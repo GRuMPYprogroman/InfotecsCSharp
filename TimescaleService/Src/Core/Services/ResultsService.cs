@@ -67,7 +67,7 @@ public class ResultsService : IResultsService
         
         DateTime earlierDate = timescales.Min(timeScale => timeScale.Date);
         
-        int dateDelta = (timescales.Max(timeScale => timeScale.Date) - earlierDate).Seconds;
+        double dateDelta = (timescales.Max(timeScale => timeScale.Date) - earlierDate).TotalSeconds;
         
         double averageExecTime = timescales.Average(timeScale => timeScale.ExecutionTime);
         

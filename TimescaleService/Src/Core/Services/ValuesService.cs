@@ -14,7 +14,22 @@ public class ValuesService : IValuesService
 
     public async Task<Timescale> AddAsync(IReadOnlyCollection<Timescale> timescales)
     {
-        return await _valuesRepository.AddAsync(timescales);
+        if (timescales == null)
+            throw new ArgumentNullException(nameof(timescales));
+        
+        if (timescales.Count == 0)
+            throw new ArgumentException("timescales must have at least one value", nameof(timescales));
+                
+        IReadOnlyList<Timescale> resultDb = await _valuesRepository.GetByFileName(timescales.First().FileName);
+
+        if (resultDb.Any())
+        {
+            return await _valuesRepository.UpdateAsync(timescales);
+        }
+        else
+        {
+            return await _valuesRepository.AddAsync(timescales);
+        }   
     }
 
     public async Task<IReadOnlyCollection<Timescale>> GetLastTenByFileName(string fileName)
