@@ -2,7 +2,7 @@
 
 namespace TimescaleService.Core.Services.Ports;
 
-public interface ICsvParser
+public interface ICsvParserService
 {
     IReadOnlyCollection<Timescale> Parse(Stream csv, string filename);
 }

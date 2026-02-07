@@ -14,7 +14,9 @@ public class Timescale
         Value = value;
     }
     
-    public string FileName { get;}
+    public long Id { get; private set; }
+    
+    public string FileName { get; private set; }
 
     public DateTime Date
     {

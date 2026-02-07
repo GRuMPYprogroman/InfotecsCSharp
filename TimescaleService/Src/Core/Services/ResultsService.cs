@@ -81,6 +81,7 @@ public class ResultsService : IResultsService
 
         var result = new AggregatedResult()
         {
+            FileName = timescales.First().FileName,
             MinimumDate = earlierDate,
             DateDelta = dateDelta,
             AverageExecTime = averageExecTime,

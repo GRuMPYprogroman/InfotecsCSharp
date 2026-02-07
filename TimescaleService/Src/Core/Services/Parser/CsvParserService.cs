@@ -5,7 +5,7 @@ using TimescaleService.Core.Services.Ports;
 
 namespace TimescaleService.Core.Services.Parser;
 
-public class CsvParser : ICsvParser
+public class CsvParserService : ICsvParserService
 {
     private const int MaxRows = 10_000;
     

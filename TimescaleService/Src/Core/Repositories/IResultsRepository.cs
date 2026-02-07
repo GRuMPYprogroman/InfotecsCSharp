@@ -12,7 +12,19 @@ public interface IResultsRepository
     
     public Task<IReadOnlyCollection<AggregatedResult>> GetByAverageValueAsync(double AverageValue);
     
-    public Task<IReadOnlyCollection<AggregatedResult>> GetByAverageExecTimeAsync(int AverageExecTime); 
+    public Task<IReadOnlyCollection<AggregatedResult>> GetByAverageExecTimeAsync(double AverageExecTime);
     
-    public Task<AggregatedResult> UpdateAsync(AggregatedResult timescale);
+    Task<IReadOnlyList<AggregatedResult>> GetByMinimumDateRangeAsync(
+        DateTime? from,
+        DateTime? to);
+
+    Task<IReadOnlyList<AggregatedResult>> GetByAverageValueRangeAsync(
+        double? min,
+        double? max);
+
+    Task<IReadOnlyList<AggregatedResult>> GetByAverageExecTimeRangeAsync(
+        double? min,
+        double? max);
+    
+    public Task<AggregatedResult?> UpdateAsync(AggregatedResult timescale);
 }

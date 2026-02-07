@@ -2,17 +2,19 @@
 
 public class AggregatedResult
 {
-    public int DateDelta { get; init; }
+    public string FileName { get; init; }
     
-    public DateTime MinimumDate { get; init; }
+    public int DateDelta { get; set; }
     
-    public double AverageExecTime { get; init; }
+    public DateTime MinimumDate { get; set; }
     
-    public double AverageValue { get; init; }
+    public double AverageExecTime { get; set; }
     
-    public double MedianValue { get; init; }
+    public double AverageValue { get; set; }
     
-    public double MaximumValue { get; init; }
+    public double MedianValue { get; set; }
     
-    public double MinimumValue { get; init; }
+    public double MaximumValue { get; set; }
+    
+    public double MinimumValue { get; set; }
 }
